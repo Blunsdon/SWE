@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  db:
+    image: postgres:latest
+    volumes:
+      - data-volume:/var/lib/postgresql/data
+    networks:
+      - db_nw
+      
+  flask:
+    build: ./flask
+    volumes:
+      - ./flask/:/opt/services/flaskapp/src
+    networks:
+      - db_nw
+      - web_nw
+    depends_on:
+      - db
+      
+  nginx:
+    image: nginx:latest 
+    ports:
+      - "80:80"
+    volumes:
+      - //c/docker/SWE/nginx.conf/:/etc/nginx.conf/
+    networks:
+      - web_nw
+    depends_on: 
+      - flask
+      
+networks:
+  db_nw:
+    driver: bridge
+  web_nw:
+    driver: bridge
+volumes:
+  data-volume:
