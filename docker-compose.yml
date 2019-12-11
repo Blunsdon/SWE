@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 
 services:
 
@@ -12,7 +12,7 @@ services:
   flask:
     build: ./flask
     volumes:
-      - ./flask/:/opt/services/flaskapp/src
+      - //c/docker/SWE/flask/:/opt/services/flaskapp/src
     networks:
       - db_nw
       - web_nw
@@ -20,16 +20,14 @@ services:
       - db
       
   nginx:
-    image: nginx:latest 
+    build: ./nginx
     ports:
       - "80:80"
-    volumes:
-      - //c/docker/SWE/nginx.conf/:/etc/nginx.conf/
     networks:
       - web_nw
     depends_on: 
       - flask
-      
+
 networks:
   db_nw:
     driver: bridge
