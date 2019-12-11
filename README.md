@@ -1,5 +1,6 @@
 # SWE-Opgave
-A simple docker-compose file That has a simple web service.
+A simple docker-compose file That has a simple web service thats work with Windows Docker toolbox.
+
 
 ### Docker-compose
 The *docker-compose.yml* file handles:
