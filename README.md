@@ -1,5 +1,6 @@
 # SWE-Opgave
-Består af en docker-compose fil, der har en simpel web service.
+A simple docker-compose file That has a simple web service thats works on a Windows machine with Docker toolbox.
+
 
 ### Docker-compose
 The *docker-compose.yml* file handles:
@@ -33,7 +34,6 @@ The first build of the Webinterface image takes a while, as many different libra
 To run on Windows, you must:
 - Ensure LF line endings via Git.
 - Share local folders via VirtualBox.
-- Run a special startup command in Docker Toolbox.
 - Find your docker-machine IP address.
 
 **LF line endings:** Before cloning the directory, ensure that your Git doesn't automatically modify files. Otherwise, Git will automatically convert to Windows style CRLF endings. It must be set up to keep Unix-style LF line endings. Run the command `git config --global core.autocrlf false`.
@@ -43,10 +43,8 @@ You can read more about it here: [Configuring Git to handle line endings](https:
 If you forget to do this, you will get an error when the webinterface container tries to run the entrypoint script.
 
 **Share local folders:** To share local files with the container (config files, etc.), you must set up a shared folder in VirtualBox:
-  - The cloned folder **server-settings** (this repository) must be shared with the Docker Toolbox.
   - The name of the shared folder _must_ be `c/docker`.
 
-**Startup:** To start the containers on Windows, run `docker-compose -f docker-compose-win.yml up -d`.
 
-**IP address:** You can find the local IP address using `docker-machine ip Default`, and then access the services in your browser with the correct IP and port number, e.g. 192.168.99.100:8000.
+**IP address:** You can find the local IP address using `docker-machine ip Default`, and then access the services in your browser with the correct IP and port number, e.g. 192.168.99.100:80.
 
