@@ -1,5 +1,5 @@
 # SWE-Opgave
-A simple docker-compose file That has a simple web service thats work with Windows Docker toolbox.
+A simple docker-compose file That has a simple web service thats works on a Windows machine with Docker toolbox.
 
 
 ### Docker-compose
